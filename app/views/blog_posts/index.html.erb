@@ -1,6 +1,12 @@
 <h1>My first view</h1>
 
 <% @blog_posts.each do |blog_post| %>
+
 <h1><%= link_to blog_post.title,blog_post%></h1>
+<%if blog_post.draft?%>
+<div class="text-gray-900 bg-gray-100">Draft</div>
+<%elsif blog_post.scheduled?%>
+<div class="text-blud-900 bg-blue-100">Scheduled</div>
+<%end%>
 <p><%=blog_post.body%></p>
 <%end%>
